@@ -63,6 +63,7 @@ function AppContent() {
       />
 
       <h1 className='judul'>Penugasan Day 2 UKM SoftDev</h1>
+      <h1 className='judul'>Membuat Shopping List - Opsi 3</h1>
       
       <div className="input-section">
         <input 
