@@ -1,8 +1,8 @@
 import './App.css';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Alerts, AlertProvider, useAlert } from "next-alert";
 
-function formatRupiah(angka) {
+function formatRupiah(angka: number) {
   const number = Number(angka);
   if (isNaN(number)) return 'Rp0,-';
   return new Intl.NumberFormat('id-ID', {
@@ -28,7 +28,7 @@ function AppContent() {
     desc: ''
   });
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setCurrentInput({
       ...currentInput,
@@ -56,8 +56,10 @@ function AppContent() {
 
   return (
     <div className='app-container'>
-      <Alerts position="top-right"
-              className="alert-setting" 
+      <Alerts 
+        position="top-right"
+        className="alert-setting"
+        direction="right"
       />
 
       <h1 className='judul'>Penugasan Day 2 UKM SoftDev</h1>
@@ -100,7 +102,7 @@ function AppContent() {
               <span className="item-name">{singleItem.item}</span>
               <span className="item-desc">{singleItem.desc}</span>
             </div>
-            <span className="item-price">{formatRupiah(singleItem.harga)}</span>
+            <span className="item-price">{formatRupiah(Number(singleItem.harga))}</span>
           </div>
         ))}
       </div>
