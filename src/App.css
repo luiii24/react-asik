@@ -8,20 +8,23 @@ body {
   background-color: #d7e09a;
   display: flex;
   justify-content: center;
-  padding-top: 40px;
+  align-items: flex-start;
+  padding: 4vh 2vw;
+  min-height: 100vh;
 }
 
 .app-container {
-  width: 100%;
+  width: 90%;
   max-width: 600px;
+  min-width: 280px;
   background-color: #c1e59a;
-  padding: 30px;
-  border-radius: 20px;
+  padding: clamp(15px, 3vw, 30px);
+  border-radius: clamp(15px, 2vw, 20px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .app-container .alert-setting {
-  osition: fixed !important;
+  position: fixed !important;
   top: 10px !important;
   right: 10px !important;
   z-index: 9999 !important; 
@@ -30,9 +33,9 @@ body {
 .app-container .judul {
   color: #5d7d42; 
   text-align: left;
-  font-size: 24px;
+  font-size: clamp(20px, 4vw, 24px);
   margin-top: 0;
-  margin-bottom: 24px;
+  margin-bottom: clamp(20px, 4vw, 24px);
 }
 
 .input-section {
@@ -46,9 +49,9 @@ body {
   border: 1px solid #5d7d42;
   background-color: #d2ffbc;
   color: #5d7d42;
-  padding: 12px 16px;
-  border-radius: 25px; 
-  font-size: 16px;
+  padding: clamp(10px, 1.5vw, 16px) clamp(12px, 2vw, 20px);
+  border-radius: clamp(20px, 3vw, 25px); 
+  font-size: clamp(14px, 1.5vw, 16px);
 }
 
 .input-full:focus, .input-partial:focus {
@@ -60,6 +63,10 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.input-row {
+  gap: clamp(8px, 1.5vw, 12px);
 }
 
 .input-partial {
@@ -97,6 +104,7 @@ body {
   padding: 15px 20px;
   border-radius: 15px;
   color: #2a3d45;
+  position: relative;
 }
 
 .item-number {
@@ -128,6 +136,35 @@ body {
   font-size: 20px;
   font-weight: bold;
   color: #d2ffbc;
+  transition: opacity 0.2s ease;
+}
+
+.delete-button {
+  display: none;
+  background-color: #5d7d42;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  position: absolute;
+  right: 20px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.list-item:hover .item-price {
+  opacity: 0;
+}
+
+.list-item:hover .delete-button {
+  display: block;
+  opacity: 1;
+}
+
+.delete-button:hover {
+  background-color: #ff2222;
 }
 
 /* Kontainer Total */
@@ -142,3 +179,16 @@ body {
   margin-top: 99px;
 }
 
+@media screen and (min-width: 450px) {
+  .input-row {
+    flex-direction: row;
+  }
+  .input-partial {
+    flex-grow: 1;
+  }
+  .input-row button {
+    flex-shrink: 0;
+  }
+
+}
+ 

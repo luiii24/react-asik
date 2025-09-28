@@ -50,6 +50,11 @@ function AppContent() {
     }
   };
 
+  const handleDeleteItem = (id: number) => {
+    setItems(items.filter(item => item.id !== id));
+    addAlert("Terhapus", "Barang wes kehapus", "success");
+  };
+
   const calculateTotal = () => {
     return items.reduce((total, item) => total + Number(item.harga), 0);
   };
@@ -104,6 +109,12 @@ function AppContent() {
               <span className="item-desc">{singleItem.desc}</span>
             </div>
             <span className="item-price">{formatRupiah(Number(singleItem.harga))}</span>
+            <button 
+              className="delete-button" 
+              onClick={() => handleDeleteItem(singleItem.id)}
+            >
+              Hapus
+            </button>
           </div>
         ))}
       </div>
